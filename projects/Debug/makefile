@@ -8,7 +8,9 @@ GEN_OPTS__FLAG :=
 GEN_CMDS__FLAG := 
 
 ORDERED_OBJS += \
+"./led.obj" \
 "./main.obj" \
+"./timer.obj" \
 "../lnk_msp430fr2355.cmd" \
 $(GEN_CMDS__FLAG) \
 -lfrwp_init.a \
@@ -153,8 +155,8 @@ blink_timer.hex: $(EXE_OUTPUTS)
 # Other Targets
 clean:
 	-$(RM) $(BIN_OUTPUTS__QUOTED)$(EXE_OUTPUTS__QUOTED)
-	-$(RM) "main.obj" 
-	-$(RM) "main.d" 
+	-$(RM) "led.obj" "main.obj" "timer.obj" 
+	-$(RM) "led.d" "main.d" "timer.d" 
 	-@echo 'Finished clean'
 	-@echo ' '
 
