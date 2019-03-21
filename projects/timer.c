@@ -5,9 +5,12 @@
  *      Author: aherrero
  */
 #include "timer.h"
+#include <msp430.h>
 #include <msp430fr2355.h>
 
 #include "led.h"
+
+extern unsigned char ledToogleFlag; //Extern allow tof using this global in main
 
 unsigned int timerCount = 0;    // Keep track of timer ticks
 
@@ -39,6 +42,9 @@ void __attribute__ ((interrupt(TIMER1_B0_VECTOR))) Timer1_B0_ISR (void)
     {
         timerCount = 0;
 
-        led_toogle();
+        ledToogleFlag = 1;
+
+        // Wake up MCU
+        __bic_SR_register_on_exit(LPM0_bits);
     }
 }

@@ -2,6 +2,9 @@
 #include <msp430fr2355.h>
 
 #include "timer.h"
+#include "led.h"
+
+unsigned char ledToogleFlag = 0;
 
 /**
  * main.c
@@ -21,8 +24,19 @@ int main(void)
     // Configure timer
     timer_init();
 
-    // Start timer interruption
-    __bis_SR_register(LPM3_bits | GIE);     // Enter LPM3 w/ interrupt
+    // Main loop
+    while(1)
+    {
+        // toogle led
+        if(ledToogleFlag == 1)
+        {
+            ledToogleFlag = 0;
+            led_toogle();
+        }
+
+        // Go to sleep until interruption
+        __bis_SR_register(LPM3_bits | GIE);     // Enter LPM3 w/ interrupt
+    }
 
 
     return 0;

@@ -8,6 +8,7 @@ main.obj: /home/aherrero/ti/ccsv8/tools/compiler/ti-cgt-msp430_18.1.4.LTS/includ
 main.obj: /home/aherrero/ti/ccsv8/tools/compiler/ti-cgt-msp430_18.1.4.LTS/include/intrinsics_legacy_undefs.h
 main.obj: /home/aherrero/ti/ccsv8/ccs_base/msp430/include/legacy.h
 main.obj: ../timer.h
+main.obj: ../led.h
 
 ../main.c: 
 /home/aherrero/ti/ccsv8/ccs_base/msp430/include/msp430.h: 
@@ -17,3 +18,4 @@ main.obj: ../timer.h
 /home/aherrero/ti/ccsv8/tools/compiler/ti-cgt-msp430_18.1.4.LTS/include/intrinsics_legacy_undefs.h: 
 /home/aherrero/ti/ccsv8/ccs_base/msp430/include/legacy.h: 
 ../timer.h: 
+../led.h: 
