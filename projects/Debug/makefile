@@ -8,9 +8,7 @@ GEN_OPTS__FLAG :=
 GEN_CMDS__FLAG := 
 
 ORDERED_OBJS += \
-"./led.obj" \
 "./main.obj" \
-"./timer.obj" \
 "../lnk_msp430fr2355.cmd" \
 $(GEN_CMDS__FLAG) \
 -lfrwp_init.a \
@@ -121,42 +119,42 @@ endif
 
 # Add inputs and outputs from these tool invocations to the build variables 
 EXE_OUTPUTS += \
-blink_timer.out \
+tuto1.out \
 
 EXE_OUTPUTS__QUOTED += \
-"blink_timer.out" \
+"tuto1.out" \
 
 BIN_OUTPUTS += \
-blink_timer.hex \
+tuto1.hex \
 
 BIN_OUTPUTS__QUOTED += \
-"blink_timer.hex" \
+"tuto1.hex" \
 
 
 # All Target
 all: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
-	@$(MAKE) --no-print-directory -Onone "blink_timer.out"
+	@$(MAKE) --no-print-directory -Onone "tuto1.out"
 
 # Tool invocations
-blink_timer.out: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
+tuto1.out: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
 	@echo 'Building target: "$@"'
 	@echo 'Invoking: MSP430 Linker'
-	"/home/aherrero/ti/ccsv8/tools/compiler/ti-cgt-msp430_18.1.4.LTS/bin/cl430" -vmspx --use_hw_mpy=F5 --advice:power=all --advice:hw_config=all --define=__MSP430FR2355__ --define=_FRWP_ENABLE --define=_INFO_FRWP_ENABLE -g --printf_support=minimal --diag_warning=225 --diag_wrap=off --display_error_number --silicon_errata=CPU21 --silicon_errata=CPU22 --silicon_errata=CPU40 -z -m"blink_timer.map" --heap_size=160 --stack_size=160 --cinit_hold_wdt=on -i"/home/aherrero/ti/ccsv8/ccs_base/msp430/include" -i"/home/aherrero/ti/ccsv8/ccs_base/msp430/lib/FR2xx" -i"/home/aherrero/ti/ccsv8/tools/compiler/ti-cgt-msp430_18.1.4.LTS/lib" -i"/home/aherrero/ti/ccsv8/tools/compiler/ti-cgt-msp430_18.1.4.LTS/include" --priority --reread_libs --define=_FRWP_ENABLE --define=_INFO_FRWP_ENABLE --diag_wrap=off --display_error_number --warn_sections --xml_link_info="blink_timer_linkInfo.xml" --use_hw_mpy=F5 --rom_model -o "blink_timer.out" $(ORDERED_OBJS)
+	"/home/aherrero/ti/ccsv8/tools/compiler/ti-cgt-msp430_18.1.4.LTS/bin/cl430" -vmspx --use_hw_mpy=F5 --advice:power=all --advice:hw_config=all --define=__MSP430FR2355__ --define=_FRWP_ENABLE --define=_INFO_FRWP_ENABLE -g --printf_support=minimal --diag_warning=225 --diag_wrap=off --display_error_number --silicon_errata=CPU21 --silicon_errata=CPU22 --silicon_errata=CPU40 -z -m"tuto1.map" --heap_size=160 --stack_size=160 --cinit_hold_wdt=on -i"/home/aherrero/ti/ccsv8/ccs_base/msp430/include" -i"/home/aherrero/ti/ccsv8/ccs_base/msp430/lib/FR2xx" -i"/home/aherrero/ti/ccsv8/tools/compiler/ti-cgt-msp430_18.1.4.LTS/lib" -i"/home/aherrero/ti/ccsv8/tools/compiler/ti-cgt-msp430_18.1.4.LTS/include" --priority --reread_libs --define=_FRWP_ENABLE --define=_INFO_FRWP_ENABLE --diag_wrap=off --display_error_number --warn_sections --xml_link_info="tuto1_linkInfo.xml" --use_hw_mpy=F5 --rom_model -o "tuto1.out" $(ORDERED_OBJS)
 	@echo 'Finished building target: "$@"'
 	@echo ' '
 
-blink_timer.hex: $(EXE_OUTPUTS)
+tuto1.hex: $(EXE_OUTPUTS)
 	@echo 'Building files: $(strip $(EXE_OUTPUTS__QUOTED))'
 	@echo 'Invoking: MSP430 Hex Utility'
-	"/home/aherrero/ti/ccsv8/tools/compiler/ti-cgt-msp430_18.1.4.LTS/bin/hex430" --memwidth=8 --romwidth=8 -o "blink_timer.hex" $(EXE_OUTPUTS__QUOTED)
+	"/home/aherrero/ti/ccsv8/tools/compiler/ti-cgt-msp430_18.1.4.LTS/bin/hex430" --memwidth=8 --romwidth=8 -o "tuto1.hex" $(EXE_OUTPUTS__QUOTED)
 	@echo 'Finished building: $(strip $(EXE_OUTPUTS__QUOTED))'
 	@echo ' '
 
 # Other Targets
 clean:
 	-$(RM) $(BIN_OUTPUTS__QUOTED)$(EXE_OUTPUTS__QUOTED)
-	-$(RM) "led.obj" "main.obj" "timer.obj" 
-	-$(RM) "led.d" "main.d" "timer.d" 
+	-$(RM) "main.obj" 
+	-$(RM) "main.d" 
 	-@echo 'Finished clean'
 	-@echo ' '
 

@@ -10,5 +10,5 @@
 
 void led_toogle()
 {
-    P1OUT ^= BIT0;  //BIT0 = 0x01 -> Bit 0 for Port 1 tootle (P1.0)
+    P1OUT ^= BIT1;  //BIT0 = 0x01 -> Bit 0 for Port 1 tootle (P1.0)
 }
