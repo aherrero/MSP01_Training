@@ -1,52 +1,46 @@
 #include <msp430.h> 
 #include <msp430fr2355.h>
 
-unsigned int timerCount = 0;    // Keep track of timer ticks
-
 /**
  * main.c
  */
 int main(void)
 {
-	WDTCTL = WDTPW | WDTHOLD;	// stop watchdog timer
-	
-	P1DIR |= 0x01;
-	// P1OUT = 0x00;    // turn off all port
-	// P1OUT |= 0x01;   // turn on only P1.1
+    WDTCTL = WDTPW | WDTHOLD;               // Stop watchdog timer
+    PM5CTL0 &= ~LOCKLPM5;                   // Disable the GPIO power-on default high-impedance mode
+                                            // to activate previously configured port settings
 
-	// timer control register configuration
-	TB1CTL |= 0x0100;   // timer 0, tassel 01, means ACLK
-	TB1CTL |= 0x0010;   // count up mode
-	TB1CTL |= 0x0004;   // clear the timer
+    // Pin IO
+    P1DIR |= 0x01;                          // Set P1.0 to output direction
+    P1OUT = 0x00;                           // Set power OFF all pin of P1
+    P1OUT |= 0x01;                          // Turn ON only the P1.0
 
-	TB1CCR0 = 4096;     // set capture and control threshold to 1/8 of 32kHz
-	TB1CCTL0 |= 0x0010;  // enable interrupt in capture and control
+    // Timer
+    TB0CTL |= 0x0100;                       // TASSEL to ACLK (0x01)
+    TB0CTL |= 0x0010;                       // MC to Up Mode (0x01)
+    TB0CTL |= 0x0004;                       // TBCLR to 1, clear the timer. (0x04);
 
-	__bis_SR_register(LPM3_bits | GIE);     // Enter LPM3 w/ interrupt
+    TB0CCR0 |= 8192;                        // Set capture. Source = 32768Hz ticks each second. For 1/4 seconds 32768/4 = 8192;
+
+    TB0CCTL0 |= 0x0010;                     // CCIE enable (Enable interruption each end counter)
 
 	return 0;
 }
 
-// Timer B1 interrupt service routine
+
+//******************************************************************************
+//
+//This is the Timer B0 interrupt vector service routine.
+//
+//******************************************************************************
 #if defined(__TI_COMPILER_VERSION__) || defined(__IAR_SYSTEMS_ICC__)
-#pragma vector = TIMER1_B0_VECTOR
-__interrupt void Timer1_B0_ISR(void)
+#pragma vector=TIMER0_B0_VECTOR
+__interrupt
 #elif defined(__GNUC__)
-void __attribute__ ((interrupt(TIMER1_B0_VECTOR))) Timer1_B0_ISR (void)
-#else
-#error Compiler not supported!
+__attribute__((interrupt(TIMER0_B0_VECTOR)))
 #endif
+void TIMER0_B0_ISR(void)
 {
-    timerCount++;
 
-    // Timer is 1/8 of a second, so count up to 8 for 1 second toggle
-    if (timerCount >= 8)
-    {
-        timerCount = 0;
-
-        P1OUT ^= 0x01;
-
-        // Wake up MCU
-        __bic_SR_register_on_exit(LPM0_bits);
-    }
 }
+

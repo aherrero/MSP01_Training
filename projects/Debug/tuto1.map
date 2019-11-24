@@ -1,10 +1,10 @@
 ******************************************************************************
                   MSP430 Linker Unix v18.1.4                   
 ******************************************************************************
->> Linked Tue Nov 19 22:54:37 2019
+>> Linked Sun Nov 24 14:06:30 2019
 
 OUTPUT FILE NAME:   <tuto1.out>
-ENTRY POINT SYMBOL: "_c_int00_noargs_mpu"  address: 00008264
+ENTRY POINT SYMBOL: "_c_int00_noargs_mpu"  address: 0000824c
 
 
 MEMORY CONFIGURATION
@@ -17,7 +17,7 @@ MEMORY CONFIGURATION
   TLVMEM                00001a00   00000200  00000000  00000200  RWIX
   BOOTCODE              00001c00   00000400  00000000  00000400  RWIX
   RAM                   00002000   00001000  000000a2  00000f5e  RWIX
-  FRAM                  00008000   00007f80  000002aa  00007cd6  RWIX
+  FRAM                  00008000   00007f80  0000028e  00007cf2  RWIX
   JTAGSIGNATURE         0000ff80   00000004  00000004  00000000  RWIX  ffff 
   BSLSIGNATURE          0000ff84   00000004  00000004  00000000  RWIX  ffff 
   BSLCONFIGURATIONSIGNA 0000ff88   00000002  00000002  00000000  RWIX  ffff 
@@ -106,22 +106,22 @@ section   page    origin      length       input sections
 
 .const     0    00008016    00000000     UNINITIALIZED
 
-.text      0    00008016    0000024e     
+.text      0    00008016    00000236     
                   00008016    000000ee     rts430x_lc_sd_eabi.lib : copy_decompress_lzss.c.obj (.text:decompress:lzss:__TI_decompress_lzss)
                   00008104    0000006a                            : autoinit.c.obj (.text:__TI_auto_init_nobinit_nopinit_hold_wdt:__TI_auto_init_nobinit_nopinit_hold_wdt)
                   0000816e    00000040                            : cpy_util.asm.obj (.text:__memcpy_far)
                   000081ae    0000003c     FRWP_INIT_LIB_CCS_msp430_large_code_small_data.lib : frwp_init.obj (.text:__mpu_init)
                   000081ea    0000003c     rts430x_lc_sd_eabi.lib : copy_decompress_none.c.obj (.text:decompress:none:__TI_decompress_none)
-                  00008226    00000032     main.obj (.text:main)
-                  00008258    00000006     rts430x_lc_sd_eabi.lib : exit.c.obj (.text:abort)
-                  0000825e    00000004                            : pre_init.c.obj (.text:_system_pre_init)
-                  00008262    00000002                            : startup.c.obj (.text:_system_post_cinit)
+                  00008226    0000001a     main.obj (.text:main)
+                  00008240    00000006     rts430x_lc_sd_eabi.lib : exit.c.obj (.text:abort)
+                  00008246    00000004                            : pre_init.c.obj (.text:_system_pre_init)
+                  0000824a    00000002                            : startup.c.obj (.text:_system_post_cinit)
 
 .text:_isr 
-*          0    00008264    00000046     
-                  00008264    00000020     rts430x_lc_sd_eabi.lib : boot.c.obj (.text:_isr:_c_int00_noargs_mpu)
-                  00008284    0000001e     main.obj (.text:_isr:Timer1_B0_ISR)
-                  000082a2    00000008     rts430x_lc_sd_eabi.lib : isr_trap.asm.obj (.text:_isr:__TI_ISR_TRAP)
+*          0    0000824c    00000042     
+                  0000824c    00000020     rts430x_lc_sd_eabi.lib : boot.c.obj (.text:_isr:_c_int00_noargs_mpu)
+                  0000826c    0000001a     main.obj (.text:_isr:Timer1_B0_ISR)
+                  00008286    00000008     rts430x_lc_sd_eabi.lib : isr_trap.asm.obj (.text:_isr:__TI_ISR_TRAP)
 
 .data      0    00002000    00000002     UNINITIALIZED
                   00002000    00000002     main.obj (.data)
@@ -236,9 +236,9 @@ MODULE SUMMARY
        Module                       code   ro data   rw data
        ------                       ----   -------   -------
     ./
-       main.obj                     80     2         2      
+       main.obj                     52     2         2      
     +--+----------------------------+------+---------+---------+
-       Total:                       80     2         2      
+       Total:                       52     2         2      
                                                             
     /home/aherrero/ti/ccsv8/ccs_base/msp430/lib/FR2xx/FRWP_INIT_LIB_CCS_msp430_large_code_small_data.lib
        frwp_init.obj                60     0         0      
@@ -284,7 +284,7 @@ MODULE SUMMARY
        Stack:                       0      0         160    
        Linker Generated:            0      22        0      
     +--+----------------------------+------+---------+---------+
-       Grand Total:                 660    72        162    
+       Grand Total:                 632    72        162    
 
 
 LINKER GENERATED COPY TABLES
@@ -382,7 +382,7 @@ address   name
 00000672  BAKMEM9                                
 00000673  BAKMEM9_H                              
 00000672  BAKMEM9_L                              
-00008258  C$$EXIT                                
+00008240  C$$EXIT                                
 000002ee  CAPTIOCTL                              
 000002ef  CAPTIOCTL_H                            
 000002ee  CAPTIOCTL_L                            
@@ -1134,7 +1134,7 @@ address   name
 00000450  TB3R                                   
 00000451  TB3R_H                                 
 00000450  TB3R_L                                 
-00008284  Timer1_B0_ISR                          
+0000826c  Timer1_B0_ISR                          
 00000510  UCA0ABCTL                              
 00000511  UCA0ABCTL_H                            
 00000510  UCA0ABCTL_L                            
@@ -1318,7 +1318,7 @@ address   name
 00008016  __TI_CINIT_Limit                       
 00008000  __TI_Handler_Table_Base                
 00008008  __TI_Handler_Table_Limit               
-000082a2  __TI_ISR_TRAP                          
+00008286  __TI_ISR_TRAP                          
 00008104  __TI_auto_init_nobinit_nopinit_hold_wdt
 00008016  __TI_decompress_lzss                   
 000081ea  __TI_decompress_none                   
@@ -1353,12 +1353,12 @@ ffffffff  __c_args__
 0000816e  __memcpy_far                           
 00000001  __mpu_enable                           
 000081ae  __mpu_init                             
-00008264  _c_int00_noargs_mpu                    
+0000824c  _c_int00_noargs_mpu                    
 0000fffe  _reset_vector                          
 00002f60  _stack                                 
-00008262  _system_post_cinit                     
-0000825e  _system_pre_init                       
-00008258  abort                                  
+0000824a  _system_post_cinit                     
+00008246  _system_pre_init                       
+00008240  abort                                  
 00008000  fram_rw_start                          
 00008000  fram_rx_start                          
 00000001  info_fram_protection                   
@@ -2398,13 +2398,13 @@ address   name
 000081ae  __mpu_init                             
 000081ea  __TI_decompress_none                   
 00008226  main                                   
-00008258  C$$EXIT                                
-00008258  abort                                  
-0000825e  _system_pre_init                       
-00008262  _system_post_cinit                     
-00008264  _c_int00_noargs_mpu                    
-00008284  Timer1_B0_ISR                          
-000082a2  __TI_ISR_TRAP                          
+00008240  C$$EXIT                                
+00008240  abort                                  
+00008246  _system_pre_init                       
+0000824a  _system_post_cinit                     
+0000824c  _c_int00_noargs_mpu                    
+0000826c  Timer1_B0_ISR                          
+00008286  __TI_ISR_TRAP                          
 0000ffce  __TI_int22                             
 0000ffd0  __TI_int23                             
 0000ffd2  __TI_int24                             
