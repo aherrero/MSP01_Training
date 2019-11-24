@@ -1,6 +1,8 @@
 #include <msp430.h> 
 #include <msp430fr2355.h>
 
+unsigned int g_TimerCount = 0;
+
 /**
  * main.c
  */
@@ -24,6 +26,8 @@ int main(void)
 
     TB0CCTL0 |= 0x0010;                     // CCIE enable (Enable interruption each end counter)
 
+    __bis_SR_register(LPM0_bits + GIE);
+
 	return 0;
 }
 
@@ -41,6 +45,12 @@ __attribute__((interrupt(TIMER0_B0_VECTOR)))
 #endif
 void TIMER0_B0_ISR(void)
 {
+    g_TimerCount++;
 
+    if(g_TimerCount >= 4)                   // Interrpution called each 1/4 seconds. After 4 calls, enter in this function to toggle the led.
+    {
+        g_TimerCount = 0;
+        P1OUT ^= 0x01;                      // Toogle the P1.0 pin
+    }
 }
 
