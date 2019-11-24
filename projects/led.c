@@ -13,6 +13,8 @@
 void LedInit(void)
 {
     // Dir
+    P1DIR |= BIT0;      // P1.0 debug
+
     P1DIR |= BIT4;
     P5DIR |= 0x000A;    //BIT3 & BIT1
 

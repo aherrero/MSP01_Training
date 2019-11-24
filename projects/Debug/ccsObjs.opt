@@ -1,1 +1,1 @@
-"./led.obj" "./main.obj" "./timer.obj" "../lnk_msp430fr2355.cmd" -lfrwp_init.a -llibc.a 
+"./led.obj" "./main.obj" "./scheduler.obj" "./timer.obj" "../lnk_msp430fr2355.cmd" -lfrwp_init.a -llibc.a 

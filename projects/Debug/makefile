@@ -10,6 +10,7 @@ GEN_CMDS__FLAG :=
 ORDERED_OBJS += \
 "./led.obj" \
 "./main.obj" \
+"./scheduler.obj" \
 "./timer.obj" \
 "../lnk_msp430fr2355.cmd" \
 $(GEN_CMDS__FLAG) \
@@ -155,8 +156,8 @@ tuto1.hex: $(EXE_OUTPUTS)
 # Other Targets
 clean:
 	-$(RM) $(BIN_OUTPUTS__QUOTED)$(EXE_OUTPUTS__QUOTED)
-	-$(RM) "led.obj" "main.obj" "timer.obj" 
-	-$(RM) "led.d" "main.d" "timer.d" 
+	-$(RM) "led.obj" "main.obj" "scheduler.obj" "timer.obj" 
+	-$(RM) "led.d" "main.d" "scheduler.d" "timer.d" 
 	-@echo 'Finished clean'
 	-@echo ' '
 

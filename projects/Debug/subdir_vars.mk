@@ -9,31 +9,37 @@ CMD_SRCS += \
 C_SRCS += \
 ../led.c \
 ../main.c \
+../scheduler.c \
 ../timer.c 
 
 C_DEPS += \
 ./led.d \
 ./main.d \
+./scheduler.d \
 ./timer.d 
 
 OBJS += \
 ./led.obj \
 ./main.obj \
+./scheduler.obj \
 ./timer.obj 
 
 OBJS__QUOTED += \
 "led.obj" \
 "main.obj" \
+"scheduler.obj" \
 "timer.obj" 
 
 C_DEPS__QUOTED += \
 "led.d" \
 "main.d" \
+"scheduler.d" \
 "timer.d" 
 
 C_SRCS__QUOTED += \
 "../led.c" \
 "../main.c" \
+"../scheduler.c" \
 "../timer.c" 
 
 

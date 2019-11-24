@@ -3,8 +3,13 @@
 
 #include "timer.h"
 #include "led.h"
+#include "scheduler.h"
 
 unsigned char g_LedToogleFlag = 0;
+unsigned char g_ExecuteTaskFlag = 0;
+
+
+struct Task_t g_LedTimingTask;
 
 /**
  * main.c
@@ -21,18 +26,25 @@ int main(void)
     // Timer
     TimerInit();
 
-    // testing
-    LedOneOn();
-    LedTwoOn();
-    LedThreeOn();
+    // Task
+    g_LedTimingTask.Period = 3 * g_TimerB0TicksEachSecond;  // 3 seconds
+    g_LedTimingTask.ElapsedTime = 0;
 
     // Loop
     while(1)
     {
+        // Led debug function
         if(g_LedToogleFlag == 1)
         {
             g_LedToogleFlag = 0;
             LedToogle();
+        }
+
+        // Scheduler
+        if(g_ExecuteTaskFlag == 1)
+        {
+            g_ExecuteTaskFlag = 0;
+            SchedulerExecuteTask();
         }
 
         // Go to sleep until interruption
