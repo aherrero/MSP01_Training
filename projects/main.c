@@ -4,6 +4,8 @@
 #include "timer.h"
 #include "led.h"
 
+unsigned char g_LedToogleFlag = 0;
+
 /**
  * main.c
  */
@@ -19,7 +21,18 @@ int main(void)
     // Timer
     TimerInit();
 
-    __bis_SR_register(LPM0_bits + GIE);
+    // Loop
+    while(1)
+    {
+        if(g_LedToogleFlag == 1)
+        {
+            g_LedToogleFlag = 0;
+            LedToogle();
+        }
+
+        // Go to sleep until interruption
+        __bis_SR_register(LPM0_bits + GIE);
+    }
 
 	return 0;
 }

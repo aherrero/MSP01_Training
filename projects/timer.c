@@ -11,6 +11,8 @@
 
 unsigned int g_TimerCount = 0;
 
+extern unsigned char g_LedToogleFlag;       // Declared in main
+
 void TimerInit(void)
 {
     TB0CTL |= 0x0100;                       // TASSEL to ACLK (0x01)
@@ -37,10 +39,13 @@ void TIMER0_B0_ISR(void)
 {
     g_TimerCount++;
 
-    if(g_TimerCount >= 4)                   // Interrpution called each 1/4 seconds. After 4 calls, enter in this function to toggle the led.
+    if(g_TimerCount >= 4)                   // Interruption called each 1/4 seconds. After 4 calls, enter in this function to toggle the led.
     {
         g_TimerCount = 0;
-        LedToogle();
+        g_LedToogleFlag = 1;                // Set the flag to 1, so the main function will call the toogle led function
+
+        // Wake up
+        __bic_SR_register_on_exit(LPM0_bits);
     }
 }
 
