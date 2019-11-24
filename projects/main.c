@@ -21,6 +21,11 @@ int main(void)
     // Timer
     TimerInit();
 
+    // testing
+    LedOneOn();
+    LedTwoOn();
+    LedThreeOn();
+
     // Loop
     while(1)
     {

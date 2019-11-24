@@ -11,4 +11,12 @@
 void LedInit(void);
 void LedToogle(void);
 
+void LedOneOn(void);
+void LedOneOff(void);
+void LedTwoOn(void);
+void LedTwoOff(void);
+void LedThreeOn(void);
+void LedThreeOff(void);
+
+
 #endif /* LED_H_ */
