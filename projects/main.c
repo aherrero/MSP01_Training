@@ -7,9 +7,9 @@
 
 unsigned char g_LedToogleFlag = 0;
 unsigned char g_ExecuteTaskFlag = 0;
+unsigned char g_LedBlinkFlag = 0;
 
-
-struct Task_t g_LedTimingTask;
+unsigned char g_LedBlinkColorRegister = 0;
 
 /**
  * main.c
@@ -26,9 +26,10 @@ int main(void)
     // Timer
     TimerInit();
 
-    // Task
-    g_LedTimingTask.Period = 3 * g_TimerB0TicksEachSecond;  // 3 seconds
-    g_LedTimingTask.ElapsedTime = 0;
+    // Create task
+    SchedulerCreateTask(LedOneBlink, 1, 1);
+    SchedulerCreateTask(LedTwoBlink, 2, 1);
+    SchedulerCreateTask(LedThreeBlink, 3, 1);
 
     // Loop
     while(1)
@@ -45,6 +46,30 @@ int main(void)
         {
             g_ExecuteTaskFlag = 0;
             SchedulerExecuteTask();
+        }
+
+        if(g_LedBlinkFlag == 1)
+        {
+            g_LedBlinkFlag = 0;
+
+            if(g_LedBlinkColorRegister & g_LedOne)
+            {
+                LedOneOn();
+            }
+
+            if(g_LedBlinkColorRegister & g_LedTwo)
+            {
+                LedTwoOn();
+            }
+
+            if(g_LedBlinkColorRegister & g_LedThree)
+            {
+                LedThreeOn();
+            }
+        }
+        else
+        {
+            LedClear();
         }
 
         // Go to sleep until interruption

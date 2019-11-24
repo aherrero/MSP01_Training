@@ -7,17 +7,36 @@
 
 #include "scheduler.h"
 #include "led.h"
+#include "timer.h"
 
-extern struct Task_t g_LedTimingTask;
+static const unsigned char g_TaskMax = 16;
+
+Task_t TaskList[g_TaskMax];
+unsigned char g_TaskCount = 0;
+
+void SchedulerCreateTask(void (*Func)(void), int Period_s, unsigned Repeat)
+{
+    Task_t task_to_add;
+    task_to_add.TaskFunction = Func;
+    task_to_add.Period = Period_s * g_TimerB0TicksEachSecond;
+    task_to_add.Repeat = Repeat;
+    task_to_add.ElapsedTime = 0;
+
+    TaskList[g_TaskCount++] = task_to_add;
+
+}
 
 void SchedulerExecuteTask(void)
 {
-    g_LedTimingTask.ElapsedTime++;
-
-    if(g_LedTimingTask.ElapsedTime >= g_LedTimingTask.Period)
+    unsigned int i;
+    for(i = 0; i< g_TaskCount; i++)
     {
-        LedOneOn();
-        LedTwoOn();
-        LedThreeOn();
+        TaskList[i].ElapsedTime++;
+
+        if(TaskList[i].ElapsedTime >= TaskList[i].Period)
+        {
+            TaskList[i].ElapsedTime = 0;
+            TaskList[i].TaskFunction();
+        }
     }
 }

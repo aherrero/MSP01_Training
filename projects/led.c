@@ -10,6 +10,9 @@
 
 #include "led.h"
 
+extern unsigned char g_LedBlinkFlag;
+extern unsigned char g_LedBlinkColorRegister;
+
 void LedInit(void)
 {
     // Dir
@@ -19,14 +22,40 @@ void LedInit(void)
     P5DIR |= 0x000A;    //BIT3 & BIT1
 
     // Output zero
-    LedOneOff();
-    LedTwoOff();
-    LedThreeOff();
+    LedClear();
 }
 
 void LedToogle(void)
 {
     P1OUT ^= 0x01;                      // Toogle the P1.0 pin
+}
+
+void LedClear(void)
+{
+    // Output zero
+    LedOneOff();
+    LedTwoOff();
+    LedThreeOff();
+
+    g_LedBlinkColorRegister = 0;
+}
+
+void LedOneBlink(void)
+{
+    g_LedBlinkColorRegister |= g_LedOne;
+    g_LedBlinkFlag = 1;
+}
+
+void LedTwoBlink(void)
+{
+    g_LedBlinkColorRegister |= g_LedTwo;
+    g_LedBlinkFlag = 1;
+}
+
+void LedThreeBlink(void)
+{
+    g_LedBlinkColorRegister |= g_LedThree;
+    g_LedBlinkFlag = 1;
 }
 
 void LedOneOn(void)
