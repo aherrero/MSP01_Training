@@ -37,6 +37,21 @@ void SchedulerExecuteTask(void)
         {
             TaskList[i].ElapsedTime = 0;
             TaskList[i].TaskFunction();
+
+            if(TaskList[i].Repeat == 0)
+            {
+                SchedulerDeleteTask(i);
+            }
         }
     }
+}
+
+void SchedulerDeleteTask(int index)
+{
+    unsigned int i;
+    for(i = index; i< g_TaskCount - 1; i++)
+    {
+        TaskList[i] = TaskList[i + 1];
+    }
+    g_TaskCount--;
 }

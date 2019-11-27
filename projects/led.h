@@ -13,7 +13,7 @@ static const unsigned char g_LedTwo     = 0x02;
 static const unsigned char g_LedThree   = 0x04;
 
 void LedInit(void);
-void LedToogle(void);
+void LedDebugToogle(void);
 
 void LedClear(void);
 

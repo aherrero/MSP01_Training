@@ -20,4 +20,6 @@ void SchedulerCreateTask(void (*Func)(void), int Period_s, unsigned Repeat);
 
 void SchedulerExecuteTask(void);
 
+void SchedulerDeleteTask(int index);
+
 #endif /* SCHEDULER_H_ */

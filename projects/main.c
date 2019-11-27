@@ -5,7 +5,7 @@
 #include "led.h"
 #include "scheduler.h"
 
-unsigned char g_LedToogleFlag = 0;
+unsigned char g_LedDebugToogleFlag = 0;
 unsigned char g_ExecuteTaskFlag = 0;
 unsigned char g_LedBlinkFlag = 0;
 
@@ -35,10 +35,10 @@ int main(void)
     while(1)
     {
         // Led debug function
-        if(g_LedToogleFlag == 1)
+        if(g_LedDebugToogleFlag == 1)
         {
-            g_LedToogleFlag = 0;
-            LedToogle();
+            g_LedDebugToogleFlag = 0;
+            LedDebugToogle();
         }
 
         // Scheduler

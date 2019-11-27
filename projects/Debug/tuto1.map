@@ -1,10 +1,10 @@
 ******************************************************************************
                   MSP430 Linker Unix v18.1.4                   
 ******************************************************************************
->> Linked Sun Nov 24 18:57:53 2019
+>> Linked Wed Nov 27 07:37:35 2019
 
 OUTPUT FILE NAME:   <tuto1.out>
-ENTRY POINT SYMBOL: "_c_int00_noargs_mpu"  address: 00008494
+ENTRY POINT SYMBOL: "_c_int00_noargs_mpu"  address: 000084f2
 
 
 MEMORY CONFIGURATION
@@ -17,7 +17,7 @@ MEMORY CONFIGURATION
   TLVMEM                00001a00   00000200  00000000  00000200  RWIX
   BOOTCODE              00001c00   00000400  00000000  00000400  RWIX
   RAM                   00002000   00001000  00000187  00000e79  RWIX
-  FRAM                  00008000   00007f80  000004da  00007aa6  RWIX
+  FRAM                  00008000   00007f80  00000538  00007a48  RWIX
   JTAGSIGNATURE         0000ff80   00000004  00000004  00000000  RWIX  ffff 
   BSLSIGNATURE          0000ff84   00000004  00000004  00000000  RWIX  ffff 
   BSLCONFIGURATIONSIGNA 0000ff88   00000002  00000002  00000000  RWIX  ffff 
@@ -108,40 +108,41 @@ section   page    origin      length       input sections
 
 .const     0    0000802a    00000000     UNINITIALIZED
 
-.text      0    0000802a    0000046a     
+.text      0    0000802a    000004c8     
                   0000802a    000000ee     rts430x_lc_sd_eabi.lib : copy_decompress_lzss.c.obj (.text:decompress:lzss:__TI_decompress_lzss)
-                  00008118    0000008e     main.obj (.text:main)
-                  000081a6    00000078     scheduler.obj (.text:SchedulerExecuteTask)
-                  0000821e    0000006a     rts430x_lc_sd_eabi.lib : autoinit.c.obj (.text:__TI_auto_init_nobinit_nopinit_hold_wdt:__TI_auto_init_nobinit_nopinit_hold_wdt)
-                  00008288    0000004e     scheduler.obj (.text:SchedulerCreateTask)
-                  000082d6    00000040     rts430x_lc_sd_eabi.lib : cpy_util.asm.obj (.text:__memcpy_far)
-                  00008316    0000003e                            : copy_zero_init.c.obj (.text:decompress:ZI:__TI_zero_init_nomemset:__TI_zero_init_nomemset)
-                  00008354    0000003c     FRWP_INIT_LIB_CCS_msp430_large_code_small_data.lib : frwp_init.obj (.text:__mpu_init)
-                  00008390    0000003c     rts430x_lc_sd_eabi.lib : copy_decompress_none.c.obj (.text:decompress:none:__TI_decompress_none)
-                  000083cc    0000001e     timer.obj (.text:TimerInit)
-                  000083ea    00000018     rts430x_lc_sd_eabi.lib : mult16_f5hw.asm.obj (.text)
-                  00008402    00000016     led.obj (.text:LedInit)
-                  00008418    00000012     led.obj (.text:LedClear)
-                  0000842a    00000012     rts430x_lc_sd_eabi.lib : memcpy.c.obj (.text:memcpy)
-                  0000843c    0000000a     led.obj (.text:LedOneBlink)
-                  00008446    0000000a     led.obj (.text:LedThreeBlink)
-                  00008450    0000000a     led.obj (.text:LedTwoBlink)
-                  0000845a    00000008     led.obj (.text:LedOneOff)
-                  00008462    00000008     led.obj (.text:LedOneOn)
-                  0000846a    00000006     led.obj (.text:LedThreeOff)
-                  00008470    00000006     led.obj (.text:LedThreeOn)
-                  00008476    00000006     led.obj (.text:LedToogle)
-                  0000847c    00000006     led.obj (.text:LedTwoOff)
-                  00008482    00000006     led.obj (.text:LedTwoOn)
-                  00008488    00000006     rts430x_lc_sd_eabi.lib : exit.c.obj (.text:abort)
-                  0000848e    00000004                            : pre_init.c.obj (.text:_system_pre_init)
-                  00008492    00000002                            : startup.c.obj (.text:_system_post_cinit)
+                  00008118    0000008e     scheduler.obj (.text:SchedulerExecuteTask)
+                  000081a6    0000008e     main.obj (.text:main)
+                  00008234    0000006a     rts430x_lc_sd_eabi.lib : autoinit.c.obj (.text:__TI_auto_init_nobinit_nopinit_hold_wdt:__TI_auto_init_nobinit_nopinit_hold_wdt)
+                  0000829e    0000004e     scheduler.obj (.text:SchedulerCreateTask)
+                  000082ec    00000048     scheduler.obj (.text:SchedulerDeleteTask)
+                  00008334    00000040     rts430x_lc_sd_eabi.lib : cpy_util.asm.obj (.text:__memcpy_far)
+                  00008374    0000003e                            : copy_zero_init.c.obj (.text:decompress:ZI:__TI_zero_init_nomemset:__TI_zero_init_nomemset)
+                  000083b2    0000003c     FRWP_INIT_LIB_CCS_msp430_large_code_small_data.lib : frwp_init.obj (.text:__mpu_init)
+                  000083ee    0000003c     rts430x_lc_sd_eabi.lib : copy_decompress_none.c.obj (.text:decompress:none:__TI_decompress_none)
+                  0000842a    0000001e     timer.obj (.text:TimerInit)
+                  00008448    00000018     rts430x_lc_sd_eabi.lib : mult16_f5hw.asm.obj (.text)
+                  00008460    00000016     led.obj (.text:LedInit)
+                  00008476    00000012     led.obj (.text:LedClear)
+                  00008488    00000012     rts430x_lc_sd_eabi.lib : memcpy.c.obj (.text:memcpy)
+                  0000849a    0000000a     led.obj (.text:LedOneBlink)
+                  000084a4    0000000a     led.obj (.text:LedThreeBlink)
+                  000084ae    0000000a     led.obj (.text:LedTwoBlink)
+                  000084b8    00000008     led.obj (.text:LedOneOff)
+                  000084c0    00000008     led.obj (.text:LedOneOn)
+                  000084c8    00000006     led.obj (.text:LedDebugToogle)
+                  000084ce    00000006     led.obj (.text:LedThreeOff)
+                  000084d4    00000006     led.obj (.text:LedThreeOn)
+                  000084da    00000006     led.obj (.text:LedTwoOff)
+                  000084e0    00000006     led.obj (.text:LedTwoOn)
+                  000084e6    00000006     rts430x_lc_sd_eabi.lib : exit.c.obj (.text:abort)
+                  000084ec    00000004                            : pre_init.c.obj (.text:_system_pre_init)
+                  000084f0    00000002                            : startup.c.obj (.text:_system_post_cinit)
 
 .text:_isr 
-*          0    00008494    00000046     
-                  00008494    00000020     rts430x_lc_sd_eabi.lib : boot.c.obj (.text:_isr:_c_int00_noargs_mpu)
-                  000084b4    0000001e     timer.obj (.text:_isr:TIMER0_B0_ISR)
-                  000084d2    00000008     rts430x_lc_sd_eabi.lib : isr_trap.asm.obj (.text:_isr:__TI_ISR_TRAP)
+*          0    000084f2    00000046     
+                  000084f2    00000020     rts430x_lc_sd_eabi.lib : boot.c.obj (.text:_isr:_c_int00_noargs_mpu)
+                  00008512    0000001e     timer.obj (.text:_isr:TIMER0_B0_ISR)
+                  00008530    00000008     rts430x_lc_sd_eabi.lib : isr_trap.asm.obj (.text:_isr:__TI_ISR_TRAP)
 
 .bss       0    00002000    000000e0     UNINITIALIZED
                   00002000    000000e0     (.common:TaskList)
@@ -261,12 +262,12 @@ MODULE SUMMARY
        Module                       code   ro data   rw data
        ------                       ----   -------   -------
     ./
-       scheduler.obj                198    0         225    
+       scheduler.obj                292    0         225    
        main.obj                     142    0         4      
        led.obj                      116    0         0      
        timer.obj                    60     2         2      
     +--+----------------------------+------+---------+---------+
-       Total:                       516    2         231    
+       Total:                       610    2         231    
                                                             
     /home/aherrero/ti/ccsv8/ccs_base/msp430/lib/FR2xx/FRWP_INIT_LIB_CCS_msp430_large_code_small_data.lib
        frwp_init.obj                60     0         0      
@@ -315,7 +316,7 @@ MODULE SUMMARY
        Stack:                       0      0         160    
        Linker Generated:            0      41        0      
     +--+----------------------------+------+---------+---------+
-       Grand Total:                 1200   91        391    
+       Grand Total:                 1294   91        391    
 
 
 LINKER GENERATED COPY TABLES
@@ -415,7 +416,7 @@ address   name
 00000672  BAKMEM9                                
 00000673  BAKMEM9_H                              
 00000672  BAKMEM9_L                              
-00008488  C$$EXIT                                
+000084e6  C$$EXIT                                
 000002ee  CAPTIOCTL                              
 000002ef  CAPTIOCTL_H                            
 000002ee  CAPTIOCTL_L                            
@@ -521,18 +522,18 @@ address   name
 000006c0  ICCSC                                  
 000006c1  ICCSC_H                                
 000006c0  ICCSC_L                                
-00008418  LedClear                               
-00008402  LedInit                                
-0000843c  LedOneBlink                            
-0000845a  LedOneOff                              
-00008462  LedOneOn                               
-00008446  LedThreeBlink                          
-0000846a  LedThreeOff                            
-00008470  LedThreeOn                             
-00008476  LedToogle                              
-00008450  LedTwoBlink                            
-0000847c  LedTwoOff                              
-00008482  LedTwoOn                               
+00008476  LedClear                               
+000084c8  LedDebugToogle                         
+00008460  LedInit                                
+0000849a  LedOneBlink                            
+000084b8  LedOneOff                              
+000084c0  LedOneOn                               
+000084a4  LedThreeBlink                          
+000084ce  LedThreeOff                            
+000084d4  LedThreeOn                             
+000084ae  LedTwoBlink                            
+000084da  LedTwoOff                              
+000084e0  LedTwoOn                               
 000004c4  MAC                                    
 000004da  MAC32H                                 
 000004db  MAC32H_H                               
@@ -1035,8 +1036,9 @@ address   name
 0000015a  SYSUNIV                                
 0000015b  SYSUNIV_H                              
 0000015a  SYSUNIV_L                              
-00008288  SchedulerCreateTask                    
-000081a6  SchedulerExecuteTask                   
+0000829e  SchedulerCreateTask                    
+000082ec  SchedulerDeleteTask                    
+00008118  SchedulerExecuteTask                   
 00000392  TB0CCR0                                
 00000393  TB0CCR0_H                              
 00000392  TB0CCR0_L                              
@@ -1181,9 +1183,9 @@ address   name
 00000450  TB3R                                   
 00000451  TB3R_H                                 
 00000450  TB3R_L                                 
-000084b4  TIMER0_B0_ISR                          
+00008512  TIMER0_B0_ISR                          
 00002000  TaskList                               
-000083cc  TimerInit                              
+0000842a  TimerInit                              
 00000510  UCA0ABCTL                              
 00000511  UCA0ABCTL_H                            
 00000510  UCA0ABCTL_L                            
@@ -1367,10 +1369,10 @@ address   name
 0000802a  __TI_CINIT_Limit                       
 00008000  __TI_Handler_Table_Base                
 0000800c  __TI_Handler_Table_Limit               
-000084d2  __TI_ISR_TRAP                          
-0000821e  __TI_auto_init_nobinit_nopinit_hold_wdt
+00008530  __TI_ISR_TRAP                          
+00008234  __TI_auto_init_nobinit_nopinit_hold_wdt
 0000802a  __TI_decompress_lzss                   
-00008390  __TI_decompress_none                   
+000083ee  __TI_decompress_none                   
 0000ffce  __TI_int22                             
 0000ffd0  __TI_int23                             
 0000ffd2  __TI_int24                             
@@ -1398,29 +1400,29 @@ address   name
 ffffffff  __TI_pprof_out_hndl                    
 ffffffff  __TI_prof_data_size                    
 ffffffff  __TI_prof_data_start                   
-00008316  __TI_zero_init_nomemset                
+00008374  __TI_zero_init_nomemset                
 ffffffff  __c_args__                             
-000082d6  __memcpy_far                           
+00008334  __memcpy_far                           
 00000001  __mpu_enable                           
-00008354  __mpu_init                             
-000083ea  __mspabi_mpyi_f5hw                     
-00008494  _c_int00_noargs_mpu                    
+000083b2  __mpu_init                             
+00008448  __mspabi_mpyi_f5hw                     
+000084f2  _c_int00_noargs_mpu                    
 0000fffe  _reset_vector                          
 00002f60  _stack                                 
-00008492  _system_post_cinit                     
-0000848e  _system_pre_init                       
-00008488  abort                                  
+000084f0  _system_post_cinit                     
+000084ec  _system_pre_init                       
+000084e6  abort                                  
 00008000  fram_rw_start                          
 00008000  fram_rx_start                          
 000020e1  g_ExecuteTaskFlag                      
 000020e3  g_LedBlinkColorRegister                
 000020e2  g_LedBlinkFlag                         
-000020e0  g_LedToogleFlag                        
+000020e0  g_LedDebugToogleFlag                   
 000020e6  g_TaskCount                            
 000020e4  g_TimerCount                           
 00000001  info_fram_protection                   
-00008118  main                                   
-0000842a  memcpy                                 
+000081a6  main                                   
+00008488  memcpy                                 
 00000001  program_fram_protection                
 00000000  start_protection_offset_address        
 
@@ -2441,7 +2443,7 @@ address   name
 00000cba  SAC3IV_L                               
 00000cbb  SAC3IV_H                               
 00002000  TaskList                               
-000020e0  g_LedToogleFlag                        
+000020e0  g_LedDebugToogleFlag                   
 000020e1  g_ExecuteTaskFlag                      
 000020e2  g_LedBlinkFlag                         
 000020e3  g_LedBlinkColorRegister                
@@ -2456,36 +2458,37 @@ address   name
 0000801a  __TI_CINIT_Base                        
 0000802a  __TI_CINIT_Limit                       
 0000802a  __TI_decompress_lzss                   
-00008118  main                                   
-000081a6  SchedulerExecuteTask                   
-0000821e  __TI_auto_init_nobinit_nopinit_hold_wdt
-00008288  SchedulerCreateTask                    
-000082d6  __memcpy_far                           
-00008316  __TI_zero_init_nomemset                
-00008354  __mpu_init                             
-00008390  __TI_decompress_none                   
-000083cc  TimerInit                              
-000083ea  __mspabi_mpyi_f5hw                     
-00008402  LedInit                                
-00008418  LedClear                               
-0000842a  memcpy                                 
-0000843c  LedOneBlink                            
-00008446  LedThreeBlink                          
-00008450  LedTwoBlink                            
-0000845a  LedOneOff                              
-00008462  LedOneOn                               
-0000846a  LedThreeOff                            
-00008470  LedThreeOn                             
-00008476  LedToogle                              
-0000847c  LedTwoOff                              
-00008482  LedTwoOn                               
-00008488  C$$EXIT                                
-00008488  abort                                  
-0000848e  _system_pre_init                       
-00008492  _system_post_cinit                     
-00008494  _c_int00_noargs_mpu                    
-000084b4  TIMER0_B0_ISR                          
-000084d2  __TI_ISR_TRAP                          
+00008118  SchedulerExecuteTask                   
+000081a6  main                                   
+00008234  __TI_auto_init_nobinit_nopinit_hold_wdt
+0000829e  SchedulerCreateTask                    
+000082ec  SchedulerDeleteTask                    
+00008334  __memcpy_far                           
+00008374  __TI_zero_init_nomemset                
+000083b2  __mpu_init                             
+000083ee  __TI_decompress_none                   
+0000842a  TimerInit                              
+00008448  __mspabi_mpyi_f5hw                     
+00008460  LedInit                                
+00008476  LedClear                               
+00008488  memcpy                                 
+0000849a  LedOneBlink                            
+000084a4  LedThreeBlink                          
+000084ae  LedTwoBlink                            
+000084b8  LedOneOff                              
+000084c0  LedOneOn                               
+000084c8  LedDebugToogle                         
+000084ce  LedThreeOff                            
+000084d4  LedThreeOn                             
+000084da  LedTwoOff                              
+000084e0  LedTwoOn                               
+000084e6  C$$EXIT                                
+000084e6  abort                                  
+000084ec  _system_pre_init                       
+000084f0  _system_post_cinit                     
+000084f2  _c_int00_noargs_mpu                    
+00008512  TIMER0_B0_ISR                          
+00008530  __TI_ISR_TRAP                          
 0000ffce  __TI_int22                             
 0000ffd0  __TI_int23                             
 0000ffd2  __TI_int24                             
@@ -2516,4 +2519,4 @@ ffffffff  __TI_prof_data_size
 ffffffff  __TI_prof_data_start                   
 ffffffff  __c_args__                             
 
-[1086 symbols]
+[1087 symbols]

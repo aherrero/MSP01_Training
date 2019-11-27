@@ -25,7 +25,7 @@ void LedInit(void)
     LedClear();
 }
 
-void LedToogle(void)
+void LedDebugToogle(void)
 {
     P1OUT ^= 0x01;                      // Toogle the P1.0 pin
 }

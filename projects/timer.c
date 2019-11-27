@@ -11,7 +11,7 @@
 
 unsigned int g_TimerCount = 0;
 
-extern unsigned char g_LedToogleFlag;       // Declared in main
+extern unsigned char g_LedDebugToogleFlag;       // Declared in main
 extern unsigned char g_ExecuteTaskFlag;     // Declared in main
 
 void TimerInit(void)
@@ -49,7 +49,7 @@ void TIMER0_B0_ISR(void)
     if(g_TimerCount >= g_TimerB0TicksEachSecond)  // Interruption called each 1/8 seconds. After 8 calls, enter in this function to toggle the led.
     {
         g_TimerCount = 0;
-        g_LedToogleFlag = 1;                // Set the flag to 1, so the main function will call the toogle led function
+        g_LedDebugToogleFlag = 1;                // Set the flag to 1, so the main function will call the toogle led function
     }
 
     // Scheduler flag
