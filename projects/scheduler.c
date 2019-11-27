@@ -12,7 +12,7 @@
 static const unsigned char g_TaskMax = 16;
 
 Task_t TaskList[g_TaskMax];
-unsigned char g_TaskCount = 0;
+unsigned int g_TaskCount = 0;
 
 void SchedulerCreateTask(void (*Func)(void), int Period_s, unsigned Repeat)
 {

@@ -28,7 +28,7 @@ int main(void)
 
     // Create task
     SchedulerCreateTask(LedOneBlink, 1, 1);
-    SchedulerCreateTask(LedTwoBlink, 2, 1);
+    SchedulerCreateTask(LedTwoBlink, 2, 0);
     SchedulerCreateTask(LedThreeBlink, 3, 1);
 
     // Loop
@@ -48,6 +48,7 @@ int main(void)
             SchedulerExecuteTask();
         }
 
+        // Action
         if(g_LedBlinkFlag == 1)
         {
             g_LedBlinkFlag = 0;
